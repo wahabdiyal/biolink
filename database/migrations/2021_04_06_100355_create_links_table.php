@@ -15,6 +15,21 @@ class CreateLinksTable extends Migration
     {
         Schema::create('links', function (Blueprint $table) {
             $table->id();
+            $table->string('url');
+            $table->foreignId('project_id')->nullable();
+            $table->foreignId('user_id');
+            $table->foreignId('domain_id')->default('0');
+            $table->foreignId('biolink_id')->nullable();
+            $table->string('type');
+            $table->string('subtype')->nullable();
+            $table->string('location_url')->nullable();
+            $table->string('click')->default('0');
+            $table->longText('settings');
+            $table->string('order');
+            $table->string('start_date')->nullable();
+            $table->string('end_date')->nullable();
+            $table->string('is_enabled')->default('1');
+          
             $table->timestamps();
         });
     }
